@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Navbar from "@/components/Navbar";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -29,7 +30,8 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${poppins.className} min-h-screen flex flex-col`}>
-          {children}
+          <Navbar />
+          <main className="mx-auto container px-2 md:px-0 ">{children}</main>
         </body>
       </html>
     </ClerkProvider>
