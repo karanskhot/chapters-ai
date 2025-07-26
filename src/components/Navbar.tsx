@@ -1,7 +1,8 @@
-import { SignOutButton, UserButton } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { NotebookTabs } from "lucide-react";
 
 const Navbar = async () => {
   const { userId } = await auth();
@@ -10,8 +11,9 @@ const Navbar = async () => {
       {
         <Link
           href={userId ? "/my-chapters" : "/"}
-          className="text-2xl font-bold text-primary"
+          className="flex items-center space-x-1 text-2xl font-bold text-primary"
         >
+          <NotebookTabs size={32} strokeWidth={1.5} />
           <h1>Chapters</h1>
         </Link>
       }
