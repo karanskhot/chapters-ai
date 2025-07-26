@@ -18,9 +18,6 @@ const Navbar = async () => {
       {userId ? (
         <div className="flex items-center gap-4">
           <UserButton />
-          <Button asChild variant={"outline"} size={"sm"}>
-            <SignOutButton />
-          </Button>
         </div>
       ) : (
         <div>

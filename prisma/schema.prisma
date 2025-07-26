@@ -6,3 +6,39 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Chapter {
+  id         String        @id @default(cuid())
+  title      String?
+  rawContent String?       @db.Text
+  aiContent  String?       @db.Text
+  status     ChapterStatus @default(draft)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  userId     String
+  Moment     Moment[]
+
+  @@index([title])
+  @@map("chapters")
+}
+
+enum ChapterStatus {
+  draft
+  published
+  archived
+}
+
+model Moment {
+  id        String   @id @default(cuid())
+  content   String?  @db.Text
+  time      String? // e.g., "00:01:30" for 1 minute 30 seconds
+  tags      String[]
+  emotion   String? // e.g., "happy", "sad", "excited"
+  location  String? // e.g., "New York", "Paris"
+  chapterId String
+  chapter   Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("moments")
+}
