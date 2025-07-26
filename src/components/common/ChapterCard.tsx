@@ -68,7 +68,10 @@ const ChapterCard = ({
 
       <CardFooter className="pt-0">
         <Button className="w-full group" asChild>
-          <Link href="/" className="flex items-center gap-2">
+          <Link
+            href={`${chapter?.id ? `/my-chapters/write?id=${chapter?.id}` : `/my-chapters/write`}`}
+            className="flex items-center gap-2"
+          >
             <PenTool className="h-4 w-4 group-hover:scale-110 transition-transform" />
             Continue Writing
           </Link>

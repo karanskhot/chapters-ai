@@ -1,4 +1,6 @@
+import ChapterBuilder from "./_components/ChapterBuilder";
+
 const Writer = () => {
-  return <div>Writer</div>;
+  return <ChapterBuilder />;
 };
 export default Writer;

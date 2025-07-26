@@ -7,7 +7,7 @@ import { NotebookTabs } from "lucide-react";
 const Navbar = async () => {
   const { userId } = await auth();
   return (
-    <header className="h-16  backdrop-blur-2xl sticky top-0 flex items-center justify-between px-2 md:px-4 lg:px-8">
+    <header className="h-16 z-50 backdrop-blur-2xl sticky top-0 flex items-center justify-between px-2 md:px-4 lg:px-8">
       {
         <Link
           href={userId ? "/my-chapters" : "/"}
