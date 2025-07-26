@@ -31,12 +31,13 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${poppins.className}  bg-gradient-to-b from-primary/5 via-primary/10 to-primary/20 `}
+          className={`${poppins.className} min-h-screen bg-gradient-to-b from-primary/5 via-primary/10 to-primary/20 flex flex-col`}
         >
-          <main className="flex flex-col min-h-screen px-4 ">
-            <Navbar />
+          <Navbar />
+          <main className="mx-auto container px-2 md:px-0 flex-1 grow ">
             {children}
           </main>
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
