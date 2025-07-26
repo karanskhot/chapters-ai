@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -29,9 +30,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${poppins.className} min-h-screen flex flex-col`}>
+        <body
+          className={`${poppins.className} min-h-screen bg-gradient-to-b from-primary/5 via-primary/10 to-primary/20 flex flex-col justify-between`}
+        >
           <Navbar />
           <main className="mx-auto container px-2 md:px-0 ">{children}</main>
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
