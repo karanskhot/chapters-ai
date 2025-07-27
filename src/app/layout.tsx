@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { get_chapter_for_today } from "@/actions/chapters";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -22,11 +23,14 @@ export const metadata: Metadata = {
     "Chapters is a platform to create and share AI-generated stories.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log(`layout rendered`);
+  const chapter_today = await get_chapter_for_today();
+  console.log(chapter_today, `in layout`);
   return (
     <ClerkProvider>
       <html lang="en">
